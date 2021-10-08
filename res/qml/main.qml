@@ -21,7 +21,7 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-    Button {
+    RoundButton {
         id: sendButton
         text: "Send"
         width: parent.width / 5
@@ -32,5 +32,6 @@ Window {
         onClicked: {
             back.sendMessage(comboBox.currentText);
         }
+        radius: 5
     }
 }

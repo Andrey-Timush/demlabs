@@ -2,10 +2,14 @@
 #include "backend.h"
 #include <QStandardPaths>
 
-Backend::Backend(QObject *parent) : QObject(parent),
-    m_comboList(m_list)
+Backend::Backend(QObject *parent) : QObject(parent)
+   // m_comboList(m_list)
 {
-    m_comboList = m_list;
+    socket = new QUdpSocket(this);
+    socket->bind(QHostAddress::LocalHost, 10000);
+    m_comboList += "Moscow";
+    m_comboList += "Saint-Petersburg";
+    m_comboList += "Novosibirsk";
 }
 
 const QStringList Backend::comboList()
@@ -68,11 +72,11 @@ void Backend::removeElement(int index)
 
 void Backend::sendMessage(QString message) 
 {
-    qDebug() << message;
-    socket.bind(QHostAddress::LocalHost, 10000);
-    QByteArray arr;
-    QDataStream qds(&arr, QIODevice::WriteOnly);
-    qds << message;
-    socket.writeDatagram(arr, QHostAddress::LocalHost, 10000);
+    qDebug() << "function sendMessage: " << message;
+    
+    QByteArray byteArray;
+    byteArray.append(message);
+    
+    socket->writeDatagram(byteArray, QHostAddress::LocalHost, 10000);
 }
 

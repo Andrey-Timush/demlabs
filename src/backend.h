@@ -35,13 +35,13 @@ Q_SIGNALS:
     void countChanged();
     void currentIndexChanged();
 
+
 private:
     QStringList m_comboList;
     int         m_count;
     int         m_currentIndex;
-    QUdpSocket *socket;
+    QUdpSocket socket;
     QStringList m_list = {"Moscow", "Saint-Petersburg", "Novosibirsk"};
-    //QUdpSocket *socket;
 };
 
 #endif // BACKEND_H

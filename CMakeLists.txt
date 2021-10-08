@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt5 COMPONENTS Core Gui Qml Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Qml Quick Network REQUIRED)
 
 set(project_sources
         src/main.cpp
@@ -28,5 +28,6 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Gui
     Qt5::Qml
     Qt5::Quick
+    Qt5::Network
 )
 

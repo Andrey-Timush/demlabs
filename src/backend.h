@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QUdpSocket>
+#include <QByteArray>
+#include <QDataStream>
 
 class Backend : public QObject
 {

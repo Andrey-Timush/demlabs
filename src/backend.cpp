@@ -69,6 +69,9 @@ void Backend::removeElement(int index)
 void Backend::sendMessage(QString message) 
 {
     qDebug() << message;
-    socket->bind(QHostAddress::LocalHost, 7000);
+    socket.bind(QHostAddress::LocalHost, 10000);
+    QByteArray arr;
+    QDataStream qds(&arr, QIODevice::WriteOnly);
+    qds << message;
 }
 

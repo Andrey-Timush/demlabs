@@ -73,5 +73,6 @@ void Backend::sendMessage(QString message)
     QByteArray arr;
     QDataStream qds(&arr, QIODevice::WriteOnly);
     qds << message;
+    socket.writeDatagram(arr, QHostAddress::LocalHost, 10000);
 }
 

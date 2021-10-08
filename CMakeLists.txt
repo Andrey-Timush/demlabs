@@ -14,6 +14,8 @@ find_package(Qt5 COMPONENTS Core Gui Qml Quick REQUIRED)
 
 set(project_sources
         src/main.cpp
+        src/backend.cpp
+        src/backend.h
         res/qml.qrc
 )
 

@@ -1,7 +1,8 @@
-#ifndef GUIAPPFTP_H
-#define GUIAPPFTP_H
+#ifndef BACKEND_H
+#define BACKEND_H
 
 #include <QObject>
+#include <QUdpSocket>
 
 class Backend : public QObject
 {
@@ -26,6 +27,9 @@ public:
     Q_INVOKABLE void addElement(const QString &element);
     Q_INVOKABLE void removeElement(int index);
 
+public slots:
+    void sendMessage(QString message);
+
 Q_SIGNALS:
     void comboListChanged();
     void countChanged();
@@ -35,10 +39,9 @@ private:
     QStringList m_comboList;
     int         m_count;
     int         m_currentIndex;
+    QUdpSocket *socket;
     QStringList m_list = {"Moscow", "Saint-Petersburg", "Novosibirsk"};
-//    QString mModel;
-//    QString mPathJson;
-//    QString mFileName;
+    //QUdpSocket *socket;
 };
 
-#endif // GUIAPPFTP_H
+#endif // BACKEND_H

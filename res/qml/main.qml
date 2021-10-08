@@ -14,7 +14,7 @@ Window {
         height: parent.height / 10
         width: parent.width / 3
         onActivated: {
-            console.log("combomodel activated" + comboBox.currentIndex)
+            console.log("combomodel activated: " + comboBox.currentIndex)
             back.currentIndex = comboBox.currentIndex
         }
         anchors.verticalCenter: parent.verticalCenter
@@ -26,8 +26,11 @@ Window {
         text: "Send"
         width: parent.width / 5
         height: parent.height / 10
+        anchors.horizontalCenter: comboBox.horizontalCenter
         anchors.top: comboBox.bottom
         anchors.topMargin: parent.height / 10
-        anchors.left: comboBox.left 
+        onClicked: {
+            back.sendMessage(comboBox.currentText);
+        }
     }
 }

@@ -5,7 +5,8 @@
 Backend::Backend(QObject *parent) : QObject(parent),
     m_comboList(m_list)
 {
-    m_comboList = m_list; 
+    m_comboList = m_list;
+    socket = new QUdpSocket(this); 
 }
 
 const QStringList Backend::comboList()
@@ -16,9 +17,9 @@ const QStringList Backend::comboList()
 void Backend::setComboList(QStringList comboList)
 {
     QStringList list;
-    list += "Moscow";
-    list += "Saint-Petersburg";
-    list += "Novosibirsk";
+    //list += "Moscow";
+    //list += "Saint-Petersburg";
+    //list += "Novosibirsk";
     m_comboList = comboList;
     emit comboListChanged();
 }
@@ -69,5 +70,10 @@ void Backend::removeElement(int index)
     }
 }
 
-
+void Backend::sendMessage(QString message) 
+{
+    qDebug() << message;
+    //socket = new QUdpSocket(this);
+    //socket->bind(QHostAddress::LocalHost, 7000);
+}
 
